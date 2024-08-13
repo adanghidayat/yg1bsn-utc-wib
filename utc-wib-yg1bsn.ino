@@ -11,7 +11,7 @@ LiquidCrystal_I2C lcd(0X27, 20, 4);
 RTC_DS3231 rtc;
 
 char daysOfTheWeek[7][12] = {"Ahad", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"};
-byte char_temp[8]={B00100,B01010,B01010,B01110,B01110,B11111,B11111,B01110}; // for thermometer icon / pour l'icône du thermomètre
+byte char_temp[8]={B00100,B01010,B01010,B01110,B01110,B11111,B11111,B01110}; // icon thermometer
 
 void setup()
 {
@@ -36,7 +36,7 @@ void loop()
 { 
   DateTime now = rtc.now();
   //lcd.setCursor(column,row);
-//------------------------------Date display - Affichage de la date-----------------------------//
+//------------------------------Tampilan Hari dan Tanggal-----------------------------//
   lcd.setCursor(0,0); 
   lcd.print(daysOfTheWeek[now.dayOfTheWeek()]);
   lcd.setCursor(10,0);
@@ -125,7 +125,9 @@ void loop()
     lcd.print(now.second(),DEC);
   }
   else {lcd.print(now.second(),DEC);}
-//------------------------------Tampilan Temperatur-----------------------------//
+//------------------------------Tampilan Suhu-----------------------------//
+  lcd.setCursor(0,3);
+  lcd.print("YG1BSN");
   lcd.setCursor(11,3);
   lcd.print(rtc.getTemperature());
   lcd.setCursor(16,3);
